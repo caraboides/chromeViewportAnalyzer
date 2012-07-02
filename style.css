@@ -15,31 +15,28 @@ body{
     overflow-x:hidden;
 }
 
-.ressources{
+.resources{
     width:700px;
     padding:10px 20px;
     margin-bottom:10px;
 }
-.ressources img {
+.resources img {
     height: 15px;
     width: 20px;
 }
-.ressources .url{
+.resources .url{
     margin-left: 10px;
 }
-.ressources .size{
+.resources .size{
     margin-left: 10px;
     width: 80px;
 }
-.ressources .item{
+.resources .item{
     float: left;
 }
 
 img{
-    width:100px;
-    height:100px;
     float:left;
-
     /* Webkit CSS3 Reflection */
     -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.75, transparent), to(rgba(255, 255, 255, 0.3))) 0 0 0 0 stretch stretch;
 }

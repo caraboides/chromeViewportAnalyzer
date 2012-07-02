@@ -10,62 +10,52 @@
 //loader('http://www.appelsiini.net/download/jquery.viewport.js');
 
 
-String.prototype.startsWith = function(str) 
-{
-    return (this.match("^"+str)==str)
+String.prototype.startsWith = function (str) {
+    return (this.match("^" + str) == str);
+};
+
+function makeAbsolutPath (str) {
+    if (str.startsWith("http")) {
+        return str;
+    }
+    if (str.startsWith("/")){
+        return window.location.origin +str;
+    }
+    var path =  window.location.origin  + window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/"));
+    return  path + "/" + str;
 }
 
 
-
-var customEvent = document.createEvent('Event');
-customEvent.initEvent('myCustomEvent', true, true);
 var images = "";
 var urls = [];
 var x = 0;
-var pathname = window.location.origin;
 
 $("img:in-viewport").each(function () {
     var src = $(this).attr("src");
-    if(src !== undefined) {
-        if(!src.startsWith("http")){
-            src = pathname + src;
-        }
-        urls[x++] = src;
+    if ((typeof src) !== "undefined" && src !== "none") {
+        urls[x++] = makeAbsolutPath(src);
     }
 });
 
 $("div:in-viewport").each(function () {
     var src = $(this).backgroundImageUrl();
-    if(src !== undefined) {
-        if(!src.startsWith("http")){
-            src = pathname + src;
-        }
-        urls[x++] = src;
+    if ((typeof src) !== "undefined" && src !== "none") {
+        urls[x++] = makeAbsolutPath(src);
     }
 });
 
 $("head script").each(function () {
     var src = $(this).attr("src");
-    if(src !== undefined) {
-        if(!src.startsWith("http")){
-            src = pathname + src;
-        }
-        urls[x++] = src;
+    if ((typeof src) !== "undefined" && src !== "none") {
+        urls[x++] = makeAbsolutPath(src);
     }
 });
 
 $("head link").each(function () {
     var src = $(this).attr("href");
-    if(src !== undefined) {
-        if(!src.startsWith("http")){
-            src = pathname + src;
-        }
-        urls[x++] = src;
+    if ((typeof src) !== "undefined" && src !== "none") {
+        urls[x++] = makeAbsolutPath(src);
     }
 });
-
-
-
-
 
 chrome.extension.sendRequest(urls);

@@ -15,7 +15,7 @@ var getFileSize = function(address, element) {
         }
         reqNumbers--;
         
-        var actsize = parseInt(this.getResponseHeader("Content-length"));
+        var actsize = parseInt(this.getResponseHeader("Content-length"),10);
         
         if(!isNaN(actsize)) {
             items++;
@@ -46,18 +46,19 @@ $(document).ready(function () {
             });
         });
     });
-    $('.ressources').html("Loading");
-    console.log("Running");
+    
+    $('.resources').html("Loading");
 
-    var foo = $('.ressources');
+    var resourceElement = $('.resources');
+
     chrome.extension.onRequest.addListener(function(urls) {
         output = "";
         
-        $('.ressources').html("");
-        $('.ressources').append("<h4>Found" + urls.length+ " Ressource</h4>");
+        $('.resources').html("");
+        $('.resources').append("<h4>Found " + urls.length+ " Resources</h4>");
         for (var i in   urls ) {
             reqNumbers++;
-            getFileSize(urls[i],foo);
+            getFileSize(urls[i],resourceElement);
         }   
     });
     
