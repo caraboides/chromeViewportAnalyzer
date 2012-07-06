@@ -1,3 +1,14 @@
+/*
+ * $Id$
+ * (c) Copyright 2012 freiheit.com technologies GmbH
+ *
+ * Created on 24.06.2012 by Christian Hennig  {christian.hennig@freiheit.com}
+ * 
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ */
+
 var size=0;
 var reqNumbers=0;
 var items = 0;

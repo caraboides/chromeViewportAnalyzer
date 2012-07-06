@@ -1,4 +1,14 @@
-//var loader = function (url) {
+/*
+ * $Id$
+ * (c) Copyright 2012 freiheit.com technologies GmbH
+ *
+ * Created on 24.06.2012 by Christian Hennig  {christian.hennig@freiheit.com}
+ * 
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ */
+////var loader = function (url) {
 //    var script = document.createElement('script');
 //    script.src = url;
 //    script.type = "text/javascript";
