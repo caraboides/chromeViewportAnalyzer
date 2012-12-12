@@ -47,6 +47,14 @@ $("img:in-viewport").each(function () {
     }
 });
 
+$("img:in-viewport").each(function () {
+    var src = $(this).backgroundImageUrl();
+    if ((typeof src) !== "undefined" && src !== "none") {
+        urls[x++] = makeAbsolutPath(src);
+    }
+});
+
+
 $("div:in-viewport").each(function () {
     var src = $(this).backgroundImageUrl();
     if ((typeof src) !== "undefined" && src !== "none") {

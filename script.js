@@ -45,6 +45,14 @@ var getFileSize = function(address, element) {
     req.send(null);
 };
 
+function removeDublicatesFromArray(inputArray) {
+    var uniqueNames= [];
+    $.each(inputArray, function(i, el){
+        if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+    });
+    return uniqueNames;
+}
+
 $(document).ready(function () {
     chrome.tabs.executeScript(null, {
         file: "jquery.min.js"
@@ -62,12 +70,12 @@ $(document).ready(function () {
 
     var resourceElement = $('.resources');
 
-    chrome.extension.onRequest.addListener(function(urls) {
+    chrome.extension.onRequest.addListener(function(urlsWithDublicates) {
         output = "";
-        
+        var urls = removeDublicatesFromArray(urlsWithDublicates); 
         $('.resources').html("");
         $('.resources').append("<h4>Found " + urls.length+ " Resources</h4>");
-        for (var i in   urls ) {
+        for (var i in urls ) {
             reqNumbers++;
             getFileSize(urls[i],resourceElement);
         }   
