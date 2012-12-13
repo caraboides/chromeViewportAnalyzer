@@ -1,11 +1,13 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 2,
     "name": "Freiheit ViewPort Analyzer",
     "version": "2",
     "description": "Chrome ViewPortAnalyzer",
+    
     "browser_action":   {
               "default_icon": "icon.png",
-              "popup": "popup.html"
+              "default_popup": "popup.html"
+    
     },
     "icons":{
          "128":"icon_128.png"

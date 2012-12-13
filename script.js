@@ -45,7 +45,7 @@ var getFileSize = function(address, element) {
     req.send(null);
 };
 
-function removeDublicatesFromArray(inputArray) {
+function removeDuplicatedValuesFromArray(inputArray) {
     var uniqueNames= [];
     $.each(inputArray, function(i, el){
         if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
@@ -72,7 +72,7 @@ $(document).ready(function () {
 
     chrome.extension.onRequest.addListener(function(urlsWithDublicates) {
         output = "";
-        var urls = removeDublicatesFromArray(urlsWithDublicates); 
+        var urls = removeDuplicatedValuesFromArray(urlsWithDublicates); 
         $('.resources').html("");
         $('.resources').append("<h4>Found " + urls.length+ " Resources</h4>");
         for (var i in urls ) {
